@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bohol Island UNESCO Global Geopark – Official Visitor Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<aside class="page-rail" id="pageRail" aria-label="Page section indicator">
+  <a href="#top" class="rail-item active" data-section="top" data-label="Home"><span>1</span></a>
+  <a href="#welcome" class="rail-item" data-section="welcome" data-label="Welcome"><span>2</span></a>
+  <a href="#geosites" class="rail-item" data-section="geosites" data-label="Geosites & Legends"><span>3</span></a>
+  <a href="#facts" class="rail-item" data-section="facts" data-label="Quick Facts"><span>4</span></a>
+  <a href="#map" class="rail-item" data-section="map" data-label="Interactive Map"><span>5</span></a>
+  <a href="#stay" class="rail-item" data-section="stay" data-label="Hotels & Souvenirs"><span>6</span></a>
+  <a href="#history" class="rail-item" data-section="history" data-label="History & Events"><span>7</span></a>
+  <a href="#planner" class="rail-item" data-section="planner" data-label="Trip Planner"><span>8</span></a>
+  <a href="#wildlife" class="rail-item" data-section="wildlife" data-label="Endemic Wildlife"><span>9</span></a>
+  <a href="#challenge" class="rail-item" data-section="challenge" data-label="Ranger Challenge"><span>10</span></a>
+  <a href="#guardian" class="rail-item" data-section="guardian" data-label="Mawmaw"><span>11</span></a>
+</aside>
+
+<header class="hero" id="top">
+  <div class="hero-slide-bg active" id="heroBgA" style="background-image: url('images/chocolate-hills.jpg')"></div>
+  <div class="hero-slide-bg" id="heroBgB"></div>
+  <div class="hero-overlay"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="#top" class="logo">Bohol Geopark</a>
+    <div class="nav-menu" id="navMenu">
+      <a href="#top" class="active" data-i18n="nav_home">Home</a>
+      <a href="#welcome" data-i18n="nav_about">About</a>
+      <a href="#geosites" data-i18n="nav_sites">Geosites</a>
+      <a href="#map" data-i18n="nav_map">Map</a>
+      <a href="#stay" data-i18n="nav_stay">Hotels & Shops</a>
+      <a href="#history" data-i18n="nav_history">History</a>
+      <a href="#planner" data-i18n="nav_planner">Trip Planner</a>
+    </div>
+    <div class="nav-tools">
+      <button class="tool-btn" id="langBtn" type="button"> EN / Binisaya</button>
+      <button class="burger-btn" id="burgerBtn" type="button" aria-label="Toggle Menu">☰</button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#top" data-i18n="nav_home">Home</a>
+    <a href="#welcome" data-i18n="nav_about">About</a>
+    <a href="#geosites" data-i18n="nav_sites">Geosites</a>
+    <a href="#map" data-i18n="nav_map">Map</a>
+    <a href="#stay" data-i18n="nav_stay">Hotels & Shops</a>
+    <a href="#history" data-i18n="nav_history">History</a>
+    <a href="#planner" data-i18n="nav_planner">Trip Planner</a>
+  </div>
+
+  <div class="hero-center" id="heroCenter">
+    <span class="hero-kicker">UNESCO GLOBAL GEOPARK · PHILIPPINES</span>
+    <h1 id="heroHeading">Explore the <span>Bohol Island</span> UNESCO Global Geopark</h1>
+    <p id="heroSub">150 million years of natural formation, living cultural heritage, barrier reefs, and cone-shaped limestone hills across 47 municipalities and 1 city.</p>
+    <a href="#map" class="hero-cta" data-i18n="cta_more">Explore Geopark</a>
+  </div>
+
+  <div class="hero-bottom">
+    <button class="slide-arrow" id="prevHero" type="button" aria-label="Previous slide">‹</button>
+    <div class="slide-dots" id="heroDots">
+      <button class="slide-dot active" data-idx="0" type="button" aria-label="Slide 1"></button>
+      <button class="slide-dot" data-idx="1" type="button" aria-label="Slide 2"></button>
+      <button class="slide-dot" data-idx="2" type="button" aria-label="Slide 3"></button>
+    </div>
+    <button class="slide-arrow" id="nextHero" type="button" aria-label="Next slide">›</button>
+  </div>
+</header>
+
+<section class="section" id="welcome">
+  <div class="wrap">
+    <h2 class="section-title" data-i18n="sec_welcome">Welcome to Bohol Island Geopark</h2>
+    <div class="welcome-grid" style="margin-top:42px">
+      <div class="welcome-copy">
+        <h3 data-i18n="sub_welcome">Geology. Nature. Living Culture.</h3>
+        <p>Certified in <strong>May 2023</strong> as the first and only UNESCO Global Geopark in the Philippines, Bohol occupies an area of <strong>8,808 km²</strong> and is home to <strong>1.4 million people</strong>.</p>
+        <p>From the ancient 150-million-year-old Alicia Schist to the Chocolate Hills, the Danajon Double Barrier Reef, the 425-hectare Banacon Island mangrove forest, and the endemic Philippine tarsier—experience an extraordinary living landscape.</p>
+        <a href="#history" class="btn-amber" data-i18n="btn_read">Read Full History</a>
+      </div>
+      <div class="collage">
+        <img class="img-main" src="images/tarsier-1.jpg" alt="Endemic Philippine Tarsier (Mawmag) clinging to a branch">
+        <img class="img-sub" src="images/chocolate-hills.jpg" alt="Viewpoint overlooking the Chocolate Hills in Carmen, Bohol">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mid-banner">
+  <div class="wrap mid-banner-inner">
+    <div class="mid-banner-box">
+      <h2>Preserving 150 Million Years of Natural Heritage</h2>
+      <p>Undergoing mandatory UNESCO revalidation every four years to uphold world-class geotourism, biodiversity protection, and sustainable community development.</p>
+      <a href="#map" class="btn-amber">Open Interactive Map</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. GEOSITES & LEGENDS (CLICKABLE FOR FULL HISTORY & STORIES) -->
+<section class="section" id="geosites">
+  <div class="wrap">
+    <h2 class="section-title">Iconic Geosites & Landmarks</h2>
+    <p class="section-sub">Tap any geosite card to open its complete geological history, formation timeline, and conservation story.</p>
+
+    <div class="cards-3">
+      <article class="tour-card clickable-card" data-story="alicia">
+        <img src="images/alicia-schist.jpg" alt="Alicia Schist rocky outcrop in Alicia, Bohol">
+        <div class="tour-body">
+          <div>
+            <h3>Alicia Schist</h3>
+            <p>Formed 150M to 66M years ago when the ancient ocean floor underwent intense tectonic activity, creating Bohol's oldest rock foundation.</p>
+          </div>
+          <div class="tour-meta">
+            <span><b></b> Brgy. Cambaol, Alicia</span>
+            <span><b></b> 150M – 66M Years Ago</span>
+            <span class="read-more-tag">Tap for Full Geological History →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tour-card clickable-card" data-story="danajon">
+        <img src="images/danajon-reef.jpg" alt="Aerial satellite view of Danajon Double Barrier Reef">
+        <div class="tour-body">
+          <div>
+            <h3>Danajon Double Barrier Reef</h3>
+            <p>A rare double barrier reef along Bohol's north coast, growing continuously over thousands of years alongside Banacon's 425-ha mangroves.</p>
+          </div>
+          <div class="tour-meta">
+            <span><b></b> Northern Bohol Coast</span>
+            <span><b></b> 2M – 5M Years Ago</span>
+            <span class="read-more-tag">Tap for Full Geological History →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tour-card clickable-card" data-story="terrace">
+        <img src="images/marine-terrace.jpg" alt="Uplifted rocky marine terrace coastline in Maribojoc and Loon">
+        <div class="tour-body">
+          <div>
+            <h3>Uplifted Marine Terrace</h3>
+            <p>Created instantly during the October 15, 2013 magnitude 7.2 earthquake, uplifting the seabed by 1.5 meters along the western coast.</p>
+          </div>
+          <div class="tour-meta">
+            <span><b></b> Maribojoc & Loon</span>
+            <span><b></b> October 2013</span>
+            <span class="read-more-tag">Tap for Full Geological History →</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <h2 class="section-title" style="margin-top:68px">Myths & Legends of Bohol Geopark</h2>
+    <p class="section-sub">Beloved Boholano folktales explaining the Chocolate Hills, mystical caves, rivers, and ancient sacred islands. Tap any card to read the full story.</p>
+
+    <div class="cards-3">
+      <article class="tour-card clickable-card" data-story="arogo">
+        <img src="images/legend-arogo.jpg" alt="The Giant's Tears legend of Arogo and Aloya">
+        <div class="tour-body">
+          <div>
+            <h3>The Lovelorn Giant (Arogo & Aloya)</h3>
+            <p>A powerful giant named Arogo fell in love with a mortal woman, Aloya. When she died, his endless grief-stricken tears dried and hardened into the hills.</p>
+          </div>
+          <div class="tour-meta">
+            <span><b></b> Chocolate Hills Folklore</span>
+            <span class="read-more-tag">Read Full Story →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tour-card clickable-card" data-story="giants">
+        <img src="images/legend-giants.jpg" alt="The Battle of the Giants legend illustration">
+        <div class="tour-body">
+          <div>
+            <h3>The Giant Battle</h3>
+            <p>Two mighty giants feuded and hurled massive boulders, stones, and sand at each other for days before tiring, becoming friends, and leaving the mounds behind.</p>
+          </div>
+          <div class="tour-meta">
+            <span><b></b> Chocolate Hills Folklore</span>
+            <span class="read-more-tag">Read Full Story →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tour-card clickable-card" data-story="carabao">
+        <img src="images/legend-carabao.jpg" alt="Carabao grazing in a green field in Bohol">
+        <div class="tour-body">
+          <div>
+            <h3>The Crop-Eating Carabao</h3>
+            <p>Townspeople left spoiled food for a giant carabao terrorizing their crops. After eating it, the sick beast left behind mounds of waste that hardened into hills.</p>
+          </div>
+          <div class="tour-meta">
+            <span><b></b> Chocolate Hills Folklore</span>
+            <span class="read-more-tag">Read Full Story →</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 NEW MYTHS & LEGENDS CARDS -->
+      <article class="tour-card clickable-card" data-story="hinagdanan">
+        <img src="images/chocolate-hills.jpg" alt="Limestone cavern skylight in Panglao">
+        <div class="tour-body">
+          <div>
+            <h3>The Legend of Hinagdanan Cave</h3>
+            <p>How a farmer clearing his land in Dauis discovered a hidden underground lagoon by dropping stones and lowering a woven ladder into the earth.</p>
+          </div>
+          <div class="tour-meta">
+            <span><b></b> Dauis, Panglao Island</span>
+            <span class="read-more-tag">Read Full Story →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tour-card clickable-card" data-story="loboc">
+        <img src="images/danajon-reef.jpg" alt="Emerald waters of Loboc River">
+        <div class="tour-body">
+          <div>
+            <h3>The Golden Bell of Loboc River</h3>
+            <p>Folklore tells of a sacred golden church bell hidden deep beneath the emerald waters of the Loboc River to protect it from raiders.</p>
+          </div>
+          <div class="tour-meta">
+            <span><b></b> Loboc Municipality</span>
+            <span class="read-more-tag">Read Full Story →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="tour-card clickable-card" data-story="lamanok">
+        <img src="images/alicia-schist.jpg" alt="Ancient limestone cliffs of Lamanok Island in Anda">
+        <div class="tour-body">
+          <div>
+            <h3>The Mystical Spirits of Lamanok Island</h3>
+            <p>Known as the cradle of Bohol’s ancient babaylan shamans, where red hematite handprints and boat-coffins rest inside sea-carved caves.</p>
+          </div>
+          <div class="tour-meta">
+            <span><b></b> Anda Peninsula</span>
+            <span class="read-more-tag">Read Full Story →</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="teal-band" id="facts">
+  <div class="wrap">
+    <h2 class="section-title">Facts About Bohol Island Geopark</h2>
+    <div class="services-3" style="margin-top:40px">
+      <div class="srv-item">
+        <div class="srv-icon">🌍</div>
+        <div>
+          <h4>8,808 km² Geopark Area</h4>
+          <p>Encompassing 47 municipalities and 1 city with a population of 1.4 million people.</p>
+        </div>
+      </div>
+      <div class="srv-item">
+        <div class="srv-icon">🏅</div>
+        <div>
+          <h4>Certified May 24, 2023</h4>
+          <p>First UNESCO Global Geopark in the Philippines, revalidated every four years.</p>
+        </div>
+      </div>
+      <div class="srv-item">
+        <div class="srv-icon">🌿</div>
+        <div>
+          <h4>Rich Biodiversity</h4>
+          <p>Home to the Philippine tarsier and the 425-hectare Banacon Island mangrove forest.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-split">
+      <div class="feature-gallery">
+        <img class="wide" src="images/asin-tibuok-process.jpg" alt="Artisans crafting traditional Asin Tibuok salt pots in Bohol">
+        <img src="images/asin-tibuok-pot.jpg" alt="Hands holding a cracked clay pot revealing solid white Asin Tibuok salt">
+        <img src="images/asin-tibuok-wrapped.jpg" alt="Traditional Asin Tibuok salt wrapped in green palm leaves">
+      </div>
+      <div>
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-size:1.45rem;margin-bottom:12px">Asin Tibuok & Living Heritage</h3>
+        <p style="margin:0 0 14px;color:rgba(255,255,255,0.94)">Beyond its million-year-old rock formations and coral reefs, the Bohol Island Geopark safeguards rare intangible cultural traditions like <strong>Asin Tibuok</strong>—an artisanal sea salt boiled in handmade clay pots over coconut husk fires and wrapped in woven palm leaves.</p>
+        <p style="margin:0;font-weight:700"> Bohol Island Geopark is just an amazing place to experience the geological past, nature, and culture!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. INTERACTIVE MAP + ILLUSTRATED BOHOL HERITAGE MAP -->
+<section class="section" id="map">
+  <div class="wrap">
+    <h2 class="section-title">Interactive & Illustrated Geopark Maps</h2>
+    <p class="section-sub">Switch between the live GPS pin map and the illustrated “Balik sa Bohol” cultural & adventure map.</p>
+
+    <div class="map-box">
+      <div class="map-bar">
+        <div class="filter-group">
+          <button class="f-btn active" data-filter="all" type="button">All Pins</button>
+          <button class="f-btn" data-filter="geosite" type="button">Geosites</button>
+          <button class="f-btn" data-filter="hotel" type="button">Near Hotels</button>
+          <button class="f-btn" data-filter="shop" type="button">Near Souvenirs</button>
+          <button class="f-btn illustrated-toggle" id="toggleIllustratedBtn" type="button">🗺️ Illustrated Map</button>
+        </div>
+        <button class="btn-amber" id="gpsBtn" type="button" style="padding:8px 14px;font-size:0.8rem">Find Nearest to Me</button>
+      </div>
+
+      <!-- Live GPS Leaflet Map -->
+      <div id="liveMapView">
+        <div id="geopark-map"></div>
+        <div class="gps-msg" id="gpsMsg"></div>
+      </div>
+
+      <!-- Illustrated "Balik sa Bohol" Map View -->
+      <div id="illustratedMapView" style="display:none;padding:18px;background:var(--bg-soft);text-align:center">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+          <span class="brgy-badge" style="margin:0"> Official Illustrated Bohol Island Adventure & Heritage Map</span>
+          <button type="button" id="zoomMapBtn" class="btn-sm"> Full-Screen Zoom</button>
+        </div>
+        <img src="images/bohol-illustrated-map.jpg" alt="Illustrated Balik sa Bohol tourist map showing all municipalities, seaports, Chocolate Hills, tarsier, and whale shark" style="width:100%;max-height:560px;object-fit:contain;border-radius:12px;border:1px solid var(--line);background:#68A4D8;cursor:zoom-in" id="illustratedMapImg">
+        <p style="font-size:0.82rem;color:var(--muted);margin:10px 0 0">Tap the illustrated map to inspect all 47 municipalities, Tagbilaran City, seaports, Danajon Double Barrier Reef, and endemic wildlife.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stay" style="padding-top:16px">
+  <div class="wrap">
+    <h2 class="section-title">Suggestions of Near Hotels</h2>
+    <p class="section-sub">Curated resorts and eco-stays near Bohol’s key geopark sites.</p>
+
+    <div class="two-col">
+      <div class="list-card">
+        <div>
+          <span class="brgy-badge"> Brgy. Talisay, Anda</span>
+          <h3>Solea Reef Resort Anda</h3>
+          <p>Check details, reviews, and rates</p>
+        </div>
+        <div class="card-btns">
+          <a class="btn-sm" href="https://www.soleahotels.com/reef-bohol/" target="_blank" rel="noopener">Visit Site ↗</a>
+          <button class="btn-sm alt" type="button" onclick="flyTo('Solea Reef Resort Anda')">Show Pin</button>
+        </div>
+      </div>
+
+      <div class="list-card">
+        <div>
+          <span class="brgy-badge"> Brgy. Virgen, Anda</span>
+          <h3>Bugnaw Si-E Beach Resort</h3>
+          <p>View guest ratings and booking options</p>
+        </div>
+        <div class="card-btns">
+          <a class="btn-sm" href="https://bugnawsieresort.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+          <button class="btn-sm alt" type="button" onclick="flyTo('Bugnaw Si-E Beach Resort')">Show Pin</button>
+        </div>
+      </div>
+
+      <div class="list-card">
+        <div>
+          <span class="brgy-badge"> Brgy. Camayaan, Loboc</span>
+          <h3>Loboc River Resort</h3>
+          <p>Explore room options and property features</p>
+        </div>
+        <div class="card-btns">
+          <a class="btn-sm" href="https://lobocriverresort.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+          <button class="btn-sm alt" type="button" onclick="flyTo('Loboc River Resort')">Show Pin</button>
+        </div>
+      </div>
+
+      <div class="list-card">
+        <div>
+          <span class="brgy-badge"> Brgy. Bool, Tagbilaran City</span>
+          <h3>Ocean Suites</h3>
+          <p>Check out photos and availability</p>
+        </div>
+        <div class="card-btns">
+          <a class="btn-sm" href="https://oceansuitesbohol.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+          <button class="btn-sm alt" type="button" onclick="flyTo('Ocean Suites')">Show Pin</button>
+        </div>
+      </div>
+
+      <div class="list-card">
+        <div>
+          <span class="brgy-badge"> Brgy. Poblacion III, Tagbilaran City</span>
+          <h3>Bohol Ecotel</h3>
+          <p>Find budget details and reviews</p>
+        </div>
+        <div class="card-btns">
+          <a class="btn-sm" href="https://boholecotel.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+          <button class="btn-sm alt" type="button" onclick="flyTo('Bohol Ecotel')">Show Pin</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top:64px">Suggestions of Near Souvenirs</h2>
+    <p class="section-sub">Local shops for Boholano delicacies, crafts, and pasalubong.</p>
+
+    <div class="two-col">
+      <div class="list-card">
+        <div>
+          <span class="brgy-badge"> Brgy. Mansasa, Tagbilaran City</span>
+          <h3>1. CMARFE Delicacy and Souvenir Shop</h3>
+          <p>Local delicacies & authentic pasalubong</p>
+        </div>
+        <button class="btn-sm alt" type="button" onclick="flyTo('CMARFE Delicacy and Souvenir Shop')">Show Pin</button>
+      </div>
+
+      <div class="list-card">
+        <div>
+          <span class="brgy-badge"> Brgy. Dao, Tagbilaran City</span>
+          <h3>2. Islands Souvenirs</h3>
+          <p>Bohol-themed apparel & keepsakes</p>
+        </div>
+        <button class="btn-sm alt" type="button" onclick="flyTo('Islands Souvenirs')">Show Pin</button>
+      </div>
+
+      <div class="list-card">
+        <div>
+          <span class="brgy-badge"> Brgy. Buenos Aires, Carmen</span>
+          <h3>3. Nel Nel Souvenir Shop</h3>
+          <p>Native handicrafts near Chocolate Hills</p>
+        </div>
+        <button class="btn-sm alt" type="button" onclick="flyTo('Nel Nel Souvenir Shop')">Show Pin</button>
+      </div>
+
+      <div class="list-card">
+        <div>
+          <span class="brgy-badge"> Brgy. Buenos Aires, Carmen</span>
+          <h3>4. Nicole’s Souvenir Shop</h3>
+          <p>Local souvenirs & handcrafted gifts</p>
+        </div>
+        <button class="btn-sm alt" type="button" onclick="flyTo('Nicole’s Souvenir Shop')">Show Pin</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="history" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <h2 class="section-title">History & Important Events</h2>
+    <p class="section-sub">Unfolding across two distinct timelines: millions of years of natural formation, followed by a decade-long institutional push to secure international protection.</p>
+
+    <div class="timeline-cols">
+      <!-- LEFT PANEL: GEOLOGICAL FORMATION TIMELINE + LIVE 2.5D DIORAMA -->
+      <div class="tl-panel">
+        <div class="cc-head">
+          <h3 style="margin:0">Geological Formation Timeline</h3>
+          <span class="live-pill" id="eraYearBadge">150M – 66M Years Ago</span>
+        </div>
+        <p style="font-size:0.84rem;color:var(--muted);margin:6px 0 12px">Scrub the timeline or tap any era below to inspect Bohol’s 2.5D geological layers:</p>
+
+        <!-- Embedded 2.5D Isometric Viewport -->
+        <div class="diorama-wrap" style="position:relative;margin:10px 0 12px">
+          <canvas id="geoCanvas" width="520" height="250" style="width:100%;height:235px;border-radius:12px;background:#0B1E26;display:block;cursor:grab;touch-action:none"></canvas>
+          <div id="pinTooltip" class="diorama-tip" style="display:none"></div>
+          <span class="diorama-hint">Tilt & Drag · Tap (!) pins</span>
+        </div>
+
+        <input type="range" id="eraSlider" min="0" max="4" value="0" step="0.01" aria-label="Geological era timeline slider" style="width:100%;accent-color:var(--teal);cursor:pointer">
+        <div class="era-ticks" style="margin-bottom:16px">
+          <button type="button" class="era-tick-btn active" data-era="0">150M yrs</button>
+          <button type="button" class="era-tick-btn" data-era="1">Cretaceous</button>
+          <button type="button" class="era-tick-btn" data-era="2">Pliocene</button>
+          <button type="button" class="era-tick-btn" data-era="3">2M yrs</button>
+          <button type="button" class="era-tick-btn" data-era="4">Oct 2013</button>
+        </div>
+
+        <!-- Synchronized Interactive Timeline Items -->
+        <ul class="tl-list interactive-tl" id="geoTimelineList">
+          <li class="tl-era-item active" data-era="0">
+            <strong class="yr">150M to 66M Years Ago · Ancient Ocean Floor</strong>
+            The ancient ocean floor undergoes intense tectonic activity, forming the island's oldest foundation, the Alicia Schist.
+          </li>
+          <li class="tl-era-item" data-era="1">
+            <strong class="yr">Early Cretaceous · Bohol Ophiolite Uplift</strong>
+            The Bohol Ophiolite is emplaced as volcanic activity and subterranean pressure slowly force the land upward.
+          </li>
+          <li class="tl-era-item" data-era="2">
+            <strong class="yr">Eocene to Pliocene Epochs · Coral Limestone Beds</strong>
+            Successive layers of volcanic materials and marine sediments accumulate, eventually forming extensive limestone beds.
+          </li>
+          <li class="tl-era-item" data-era="3">
+            <strong class="yr">2M to 5M Years Ago · Chocolate Hills & Danajon Reef</strong>
+            Weathering and erosion shape the uplifted coral reefs into the Chocolate Hills. Concurrently, the Danajon Double Barrier Reef begins thousands of years of continuous growth.
+          </li>
+          <li class="tl-era-item" data-era="4">
+            <strong class="yr">October 2013 · 7.2 Earthquake & Marine Terrace</strong>
+            A massive 7.2 magnitude earthquake visibly breaks the landscape, instantly creating a 1.5-meter uplifted marine terrace in Maribojoc and Loon.
+          </li>
+        </ul>
+      </div>
+
+      <!-- RIGHT PANEL: INSTITUTIONAL & UNESCO TIMELINE -->
+      <div class="tl-panel">
+        <h3>Institutional & UNESCO Timeline</h3>
+        <ul class="tl-list">
+          <li><strong class="yr">1998</strong>The provincial government enacts the Bohol Environmental Code, setting the early foundational framework for ecological management.</li>
+          <li><strong class="yr">2015</strong>The Bohol Island Geopark Project officially launches as a joint research and structural initiative backed by the University of the Philippines and the University of Hamburg, Germany.</li>
+          <li><strong class="yr">May 24, 2023</strong>UNESCO officially designates Bohol Island as the first and only Global Geopark in the Philippines, integrating its 47 municipalities and 1 city into the global conservation network.</li>
+          <li><strong class="yr">December 2025</strong>The provincial board updates its Tourism Code (Provincial Ordinance No. 2025-040) to legally realign all local tourism standards with UNESCO's global sustainability mandates.</li>
+          <li><strong class="yr">August 2026</strong>The geopark undergoes its first mandatory four-year UNESCO Revalidation Mission to evaluate its compliance with international standard parameters.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:32px">
+      <div class="list-card" style="display:block">
+        <span class="brgy-badge">1 · Millions of Years Ago</span>
+        <h3>Formation of the Chocolate Hills</h3>
+        <p>Bohol's famous cone-shaped limestone hills developed through geological processes, including the erosion and dissolution of ancient limestone formed from coral reefs.</p>
+      </div>
+      <div class="list-card" style="display:block">
+        <span class="brgy-badge">2 · October 15, 2013</span>
+        <h3>The 2013 Bohol Earthquake</h3>
+        <p>A magnitude 7.2 earthquake struck Bohol, uplifting sections of the seabed to create visible marine terraces in Loon and Maribojoc and a ground rupture in Inabanga.</p>
+      </div>
+      <div class="list-card" style="display:block">
+        <span class="brgy-badge">3 · 1565</span>
+        <h3>The Sandugo Blood Compact</h3>
+        <p>Datu Sikatuna and Spanish explorer Miguel López de Legazpi entered into a blood compact, symbolizing friendship and an agreement central to Bohol's cultural heritage.</p>
+      </div>
+      <div class="list-card" style="display:block">
+        <span class="brgy-badge">4 · Youth Initiative</span>
+        <h3>PAGTUKOD: Founding Assembly of the B.I.G. Youth Forum</h3>
+        <p>An initiative inviting young Boholanos to help shape youth participation in Geopark conservation and development.</p>
+      </div>
+      <div class="list-card" style="display:block;grid-column:1/-1">
+        <span class="brgy-badge">5 · May 24, 2023</span>
+        <h3>UNESCO Global Geopark Designation</h3>
+        <p>Bohol became the first UNESCO Global Geopark in the Philippines, recognizing its internationally significant geological heritage, biodiversity, cultural traditions, and commitment to conservation and sustainable development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. INTERACTIVE VISITOR COMPANION & TRIP PLANNER (BENTO LAYOUT) -->
+<section class="section" id="planner">
+  <div class="wrap">
+    <h2 class="section-title">Visitor Companion & Trip Planner</h2>
+    <p class="section-sub">Plan your route, listen to field soundscapes, check seasonal conditions, and learn local Boholano phrases.</p>
+
+   <div class="two-col" style="margin-top:24px">
+      <!-- LEFT: ROUTE BUILDER -->
+      <div class="companion-card">
+        <div class="cc-head">
+          <span class="brgy-badge">Curated Route Builder</span>
+          <span class="live-pill">1-Day & 3-Day Plans</span>
+        </div>
+        <h3>Plan Your Geopark Adventure</h3>
+        <div id="routeIntro" class="tool-launcher">
+          <p>Not sure where to start across 47 municipalities and 1 city? Open our curated step-by-step route planner.</p>
+          <button type="button" class="btn-amber reveal-btn" data-target="routeDrawer" data-intro="routeIntro">Build My Geopark Itinerary</button>
+        </div>
+        <div id="routeDrawer" class="tool-reveal" style="display:none">
+          <div class="itin-tabs" style="margin:10px 0 6px">
+            <button class="itab active" data-plan="day1" type="button">1-Day Highlights</button>
+            <button class="itab" data-plan="day3" type="button">3-Day Explorer</button>
+          </div>
+          <div id="itinContent" class="itin-timeline"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: BOHOLANO PHRASEBOOK -->
+      <div class="companion-card">
+        <div class="cc-head">
+          <span class="brgy-badge">Local Dialect</span>
+          <small id="copyNote" style="color:var(--teal-dark);font-weight:700"></small>
+        </div>
+        <h3>Speak Local Binisaya</h3>
+        <div id="phraseIntro" class="tool-launcher">
+          <p>Greet locals warmly in Boholano. Open our pocket phrasebook with one-tap copy and pronunciation guides.</p>
+          <button type="button" class="btn-amber reveal-btn" data-target="phraseDrawer" data-intro="phraseIntro">Open Boholano Phrasebook</button>
+        </div>
+        <div id="phraseDrawer" class="tool-reveal" style="display:none">
+          <p style="margin-bottom:10px">Tap any phrase card to copy it to your clipboard:</p>
+          <div class="phrase-grid">
+            <button class="phrase-chip" type="button" data-copy="Maayong adlaw!">
+              <strong>Maayong adlaw!</strong>
+              <span>Good day! (mah-AH-yong AHD-law)</span>
+            </button>
+            <button class="phrase-chip" type="button" data-copy="Asa dapita ang Chocolate Hills?">
+              <strong>Asa dapita ang Chocolate Hills?</strong>
+              <span>Where are the Chocolate Hills?</span>
+            </button>
+            <button class="phrase-chip" type="button" data-copy="Pila kini?">
+              <strong>Pila kini?</strong>
+              <span>How much is this? (PEE-lah kee-NEE)</span>
+            </button>
+            <button class="phrase-chip" type="button" data-copy="Salamat kaayo!">
+              <strong>Salamat kaayo!</strong>
+              <span>Thank you very much! (sah-LAH-maht kah-AH-yo)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- DEDICATED SECTION: PROTECTED BIODIVERSITY & ENDEMIC WILDLIFE CAROUSEL -->
+<section class="section" id="wildlife">
+  <div class="wrap">
+    <h2 class="section-title">Protected Geopark Biodiversity</h2>
+    <p class="section-sub">Explore the rare gliding mammals, forest-canopy lizards, and centuries-old mangrove sanctuaries thriving across Bohol.</p>
+
+    <div class="welcome-grid" style="margin-top:42px">
+      <!-- Left Editorial Copy + Carousel Controls -->
+      <div class="welcome-copy" id="wildlifeCopy">
+        <span class="brgy-badge" id="wlTag">Endemic Arboreal Mammal</span>
+        <h3 id="wlTitle" style="margin-top:8px">Philippine Colugo (Cagwang)</h3>
+        <p id="wlDesc1">Known locally as the <strong>Cagwang</strong>, the Philippine colugo is a nocturnal gliding mammal inhabiting Bohol’s secondary limestone forests and lush wooded valleys.</p>
+        <p id="wlDesc2">Equipped with a wide, fur-covered gliding membrane (<em>patagium</em>) stretching from its neck to the tip of its tail, it can soar silently over 100 meters between forest canopies without descending to the ground.</p>
+
+        <div class="wl-controls">
+          <div class="wl-arrows">
+            <button type="button" class="wl-arrow" id="prevWildlife" aria-label="Previous wildlife">‹</button>
+            <button type="button" class="wl-arrow" id="nextWildlife" aria-label="Next wildlife">›</button>
+          </div>
+          <div class="wl-dots" id="wildlifeDots">
+            <button type="button" class="wl-dot active" data-widx="0" aria-label="Philippine Colugo"></button>
+            <button type="button" class="wl-dot" data-widx="1" aria-label="Bohol Flying Lizard"></button>
+            <button type="button" class="wl-dot" data-widx="2" aria-label="Banacon Mangrove Ecosystem"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Overlapping Collage Matching Welcome Section -->
+      <div class="collage wildlife-collage" id="wildlifeCollage">
+        <img class="img-main" id="wlImgMain" src="images/colugo-1.jpg" alt="Philippine Colugo clinging to a tree branch">
+        <img class="img-sub" id="wlImgSub" src="images/colugo-2.jpg" alt="Close-up of Philippine Colugo gliding membrane">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL CENTERED GEOPARK RANGER CHALLENGE SECTION -->
+<section class="section challenge-band" id="challenge">
+  <div class="wrap challenge-center">
+    <span class="hero-kicker" style="margin-bottom:16px">GEOPARK RANGER CHALLENGE</span>
+    <h2 class="section-title" style="color:#FFFFFF;font-size:clamp(2rem,4.2vw,3rem)">Are You a True Bohol Geopark Explorer?</h2>
+    <p id="quizIntroText" class="challenge-sub">Put your knowledge of Bohol’s 150-million-year rock formations, rare wildlife, and living heritage to the test—and unlock your official downloadable <strong>Honorary Geopark Ranger Pass</strong>.</p>
+
+    <!-- Initial Single Centered Button -->
+    <div id="quizIntro">
+      <button type="button" id="startQuizBtn" class="hero-cta" style="font-size:1rem;padding:15px 34px;border:none">Take the Quiz & Earn Your Pass</button>
+    </div>
+
+    <!-- Expanded Interactive Quiz Stage -->
+    <div id="quizBox" class="challenge-stage" style="display:none">
+      <div class="cc-head" style="margin-bottom:12px">
+        <span class="brgy-badge">Ranger Certification</span>
+        <span id="quizProgress" style="font-size:0.82rem;font-weight:700;color:var(--teal-dark)">Question 1 of 4</span>
+      </div>
+      <p id="quizQuestion" style="font-weight:700;color:var(--ink);font-size:1.08rem;margin:8px 0 16px;text-align:left"></p>
+      <div id="quizOptions" class="quiz-opts"></div>
+      <p id="quizFeedback" style="margin-top:12px;font-weight:700;min-height:22px;color:var(--teal-dark)"></p>
+    </div>
+
+    <!-- Unlocked Digital Ranger Pass Stage -->
+    <div id="passBox" class="challenge-stage" style="display:none">
+      <span class="live-pill" style="margin-bottom:10px;display:inline-block">Certification Unlocked</span>
+      <h3 style="color:var(--ink);margin-bottom:12px">Customize & Download Your Ranger Pass</h3>
+      <div class="pass-form">
+        <input type="text" id="rangerName" placeholder="Enter your full name for your pass...">
+        <button type="button" id="downloadPassBtn" class="btn-amber" style="padding:10px 18px;font-size:0.85rem">Download PNG Pass</button>
+      </div>
+      <canvas id="badgeCanvas" width="480" height="220" style="width:100%;max-width:480px;margin:0 auto;border-radius:12px;box-shadow:var(--shadow-lg);display:block"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="guardian">
+  <div class="wrap mawmaw-box">
+    <h2 class="section-title" style="margin-bottom:28px">Guardian of the Geopark</h2>
+    <img src="images/tarsier-guardian.jpg" alt="Mawmag Philippine Tarsier peeking under green leaves">
+    <blockquote>
+      "The official symbol and guardian of the Bohol Island Geopark is <strong>Mawmaw</strong>, an animated protector inspired by the <em>Mawmag</em> (the local Visayan term for the endemic Philippine tarsier). Mawmaw watches over the island's limestone forests, caves, and marine sanctuaries, representing Bohol's commitment to biodiversity and sustainable geotourism."
+    </blockquote>
+    <cite>Mawmaw · The Protector</cite>
+    <small style="color:var(--muted)">Bohol Island UNESCO Global Geopark</small>
+  </div>
+</section>
+
+<div class="mawmaw-fab-wrap">
+  <div class="mawmaw-drawer" id="mawmawDrawer">
+    <div class="md-head">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="images/tarsier-guardian.jpg" alt="Mawmaw">
+        <div>
+          <strong>Ask Mawmaw</strong>
+          <small>Geopark Guardian Guide</small>
+        </div>
+      </div>
+      <button type="button" id="closeMawmaw" aria-label="Close guide">✕</button>
+    </div>
+    <div class="md-body" id="mawmawReply">
+      Maayong adlaw! I’m <strong>Mawmaw</strong>. Tap any question below to plan your Bohol Geopark visit:
+    </div>
+    <div class="md-qs">
+      <button type="button" data-q="hills">When do the hills turn brown?</button>
+      <button type="button" data-q="transit"> How do I get to Carmen?</button>
+      <button type="button" data-q="salt"> Where to see Asin Tibuok?</button>
+      <button type="button" data-q="tarsier"> Tarsier sanctuary rules?</button>
+    </div>
+  </div>
+  <button type="button" class="mawmaw-fab" id="openMawmaw">
+    <img src="images/tarsier-guardian.jpg" alt="Ask Mawmaw">
+    <span>Ask Mawmaw</span>
+  </button>
+</div>
+
+<div class="story-modal-backdrop" id="storyModal" aria-hidden="true">
+  <div class="story-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="modal-close-btn" id="closeStoryModal" aria-label="Close pop-up">✕</button>
+    <img id="modalImg" src="" alt="">
+    <div class="modal-body">
+      <div class="modal-badges">
+        <span class="brgy-badge" id="modalBadge"></span>
+        <span class="live-pill" id="modalEra"></span>
+      </div>
+      <h3 id="modalTitle"></h3>
+      <div id="modalContent" class="modal-text"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn-amber" id="modalMapBtn"> Locate on Geopark Map</button>
+        <button type="button" class="btn-sm alt" id="modalDoneBtn">Close Story</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FULL-SCREEN ILLUSTRATED MAP LIGHTBOX -->
+<div class="story-modal-backdrop" id="mapLightbox" aria-hidden="true">
+  <div class="lightbox-inner">
+    <button type="button" class="modal-close-btn" id="closeLightbox" aria-label="Close full-screen map">✕</button>
+    <img src="images/bohol-illustrated-map.jpg" alt="Full screen Bohol Illustrated Map">
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a href="#top" class="logo" style="color:#FFFFFF">Bohol Geopark</a>
+      <p>The first and only <strong>UNESCO Global Geopark</strong> in the Philippines (designated May 24, 2023), spanning 8,808 km² across 47 municipalities and 1 city.</p>
+      <span class="footer-pill">Protected by Guardian Mawmaw</span>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#welcome">About the Geopark</a>
+      <a href="#geosites">Iconic Geosites & Myths</a>
+      <a href="#map">Interactive & Illustrated Maps</a>
+      <a href="#stay">Hotels & Souvenir Shops</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Interactive Tools</h4>
+      <a href="#history">Geological & UNESCO Timelines</a>
+      <a href="#planner">Trip Planner & Ambient Audio</a>
+      <a href="#timemachine">2.5D Geological Time Machine</a>
+      <a href="#timemachine">Geopark Ranger Quiz</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Visitor Guidelines</h4>
+      <p><strong>Conservation Mandate:</strong> Provincial Tourism Code (Ordinance No. 2025-040) & UNESCO 4-Year Revalidation Standard.</p>
+      <p><strong>Tarsier Etiquette:</strong> Keep quiet, no flash photography, and stay on marked boardwalks.</p>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <span>© 2026 Bohol Island UNESCO Global Geopark Visitor Guide · 47 Municipalities & 1 City</span>
+    <a href="#top" class="back-top-btn">↑ Back to Top</a>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="index.js"></script>
+</body>
+</html>
