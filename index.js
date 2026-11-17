@@ -207,29 +207,152 @@ document.getElementById('gpsBtn').addEventListener('click', () => {
   });
 });
 
-let lang = 'en';
-const dict = {
+// =========================================================================
+// FULL-SITE EN / BINISAYA (BOHOLANO) TRANSLATOR
+// =========================================================================
+let currentLang = 'en';
+
+const i18nKeys = {
   en: {
-    nav_home: 'Home', nav_about: 'About', nav_sites: 'Geosites', nav_map: 'Map',
-    nav_stay: 'Hotels & Shops', nav_history: 'History', nav_planner: 'Trip Planner', nav_diorama: 'Time Machine',
-    cta_more: 'Explore Geopark', sec_welcome: 'Welcome to Bohol Island Geopark',
-    sub_welcome: 'Geology. Nature. Living Culture.', btn_read: 'Read Full History'
+    nav_home: 'Home',
+    nav_about: 'About',
+    nav_sites: 'Geosites',
+    nav_geosites: 'Geosites',
+    nav_map: 'Map',
+    nav_stay: 'Hotels & Shops',
+    nav_history: 'History',
+    nav_planner: 'Trip Planner',
+    nav_wildlife: 'Wildlife',
+    nav_challenge: 'Ranger Challenge',
+    cta_more: 'Explore Geopark',
+    sec_welcome: 'Welcome to Bohol Island Geopark',
+    sub_welcome: 'Geology. Nature. Living Culture.',
+    btn_read: 'Read Full History'
   },
   ceb: {
-    nav_home: 'Sinugdanan', nav_about: 'Mahitungod', nav_sites: 'Geosites', nav_map: 'Mapa',
-    nav_stay: 'Hotel ug Tindahan', nav_history: 'Kasaysayan', nav_planner: 'Plano sa Biyahe', nav_diorama: 'Makina sa Panahon',
-    cta_more: 'Suhira ang Geopark', sec_welcome: 'Maayong Pag-abot sa Bohol Island Geopark',
-    sub_welcome: 'Kinaiyahan. Kasaysayan. Buhing Kultura.', btn_read: 'Basaha ang Kasaysayan'
+    nav_home: 'Sinugdanan',
+    nav_about: 'Mahitungod',
+    nav_sites: 'Mga Geosite',
+    nav_geosites: 'Mga Geosite',
+    nav_map: 'Mapa',
+    nav_stay: 'Hotel ug Tindahan',
+    nav_history: 'Kasaysayan',
+    nav_planner: 'Plano sa Biyahe',
+    nav_wildlife: 'Kahalipay sa Kinaiyahan',
+    nav_challenge: 'Hagit sa Ranger',
+    cta_more: 'Suhira ang Geopark',
+    sec_welcome: 'Maayong Pag-abot sa Bohol Island Geopark',
+    sub_welcome: 'Kinaiyahan. Kasaysayan. Buhing Kultura.',
+    btn_read: 'Basaha ang Kasaysayan'
   }
 };
 
-document.getElementById('langBtn').addEventListener('click', () => {
-  lang = lang === 'en' ? 'ceb' : 'en';
+const cebPhraseMap = new Map([
+  // Hero & Welcome
+  ['Explore the Bohol Island UNESCO Global Geopark', 'Susiha ang Bohol Island UNESCO Global Geopark'],
+  ['150 million years of natural formation, living cultural heritage, barrier reefs, and cone-shaped limestone hills across 47 municipalities and 1 city.', '150 ka milyon ka tuig sa natural nga pagkaporma, buhing kultural nga kabilin, mga bahura, ug pormang-kono nga mga bungtod sa 47 ka lungsod ug 1 ka siyudad.'],
+  ['Explore Geopark', 'Susiha ang Geopark'],
+  ['Welcome to Bohol Island Geopark', 'Maayong Pag-abot sa Bohol Island Geopark'],
+  ['Geology. Nature. Living Culture.', 'Heolohiya. Kinaiyahan. Buhing Kultura.'],
+  ['Certified in May 2023 as the first and only UNESCO Global Geopark in the Philippines, Bohol occupies an area of 8,808 km² and is home to 1.4 million people.', 'Gisertipikahan niadtong Mayo 2023 isip una ug bugtong UNESCO Global Geopark sa Pilipinas, ang Bohol adunay gidak-on nga 8,808 km² ug pinuy-anan sa 1.4 ka milyon ka tawo.'],
+  ['From the ancient 150-million-year-old Alicia Schist to the Chocolate Hills, the Danajon Double Barrier Reef, the 425-hectare Banacon Island mangrove forest, and the endemic Philippine tarsier—experience an extraordinary living landscape.', 'Gikan sa karaang 150-ka-milyon-ka-tuig nga Alicia Schist ngadto sa Chocolate Hills, Danajon Double Barrier Reef, 425-ektaryang katunggan sa Banacon Island, ug ang lumad nga Philippine tarsier—masinati ang talagsaong buhing talan-awon.'],
+  ['Read Full History', 'Basaha ang Tibuok Kasaysayan'],
+
+  // Preserving Banner & Geosites
+  ['Preserving 150 Million Years of Natural Heritage', 'Pagpreserbar sa 150 Ka Milyon Ka Tuig sa Natural nga Kabilin'],
+  ['Undergoing mandatory UNESCO revalidation every four years to uphold world-class geotourism, biodiversity protection, and sustainable community development.', 'Nagpailalom sa mandatory nga revalidation sa UNESCO matag upat ka tuig aron mapadayon ang world-class nga geotourism ug pagpanalipod sa kinaiyahan.'],
+  ['Open Interactive Map', 'Ablihi ang Interaktibong Mapa'],
+  ['Iconic Geosites & Landmarks', 'Mga Bantogang Geosite ug Talan-awon'],
+  ['Tap any geosite card to open its complete geological history, formation timeline, and conservation story.', 'Pindota ang bisan unsang geosite card aron mabasa ang tibuok kasaysayan sa heolohiya ug konserbasyon niini.'],
+  ['Myths & Legends of Bohol Geopark', 'Mga Mito ug Sugilanon sa Bohol Geopark'],
+  ['Beloved Boholano folktales explaining the Chocolate Hills, mystical caves, rivers, and ancient sacred islands. Tap any card to read the full story.', 'Mga sugilanon sa mga Boholano bahin sa Chocolate Hills, mistikong mga langub, suba, ug karaang sagradong isla. Pindota aron mabasa ang tibuok istorya.'],
+
+  // Quick Facts & Map
+  ['Facts About Bohol Island Geopark', 'Mga Kamatuoran Bahin sa Bohol Island Geopark'],
+  ['8,808 km² Geopark Area', '8,808 km² nga Gidak-on sa Geopark'],
+  ['Encompassing 47 municipalities and 1 city with a population of 1.4 million people.', 'Naglangkob sa 47 ka lungsod ug 1 ka siyudad nga adunay populasyon nga 1.4 ka milyon ka tawo.'],
+  ['Certified May 24, 2023', 'Gisertipikahan Mayo 24, 2023'],
+  ['First UNESCO Global Geopark in the Philippines, revalidated every four years.', 'Una nga UNESCO Global Geopark sa Pilipinas, ginarevalidate matag upat ka tuig.'],
+  ['Rich Biodiversity', 'Dato nga Kinaiyahan'],
+  ['Home to the Philippine tarsier and the 425-hectare Banacon Island mangrove forest.', 'Pinuy-anan sa Philippine tarsier ug sa 425-ektaryang katunggan sa Banacon Island.'],
+  ['Asin Tibuok & Living Heritage', 'Asin Tibuok ug Buhing Kabilin'],
+  ['Interactive & Illustrated Geopark Maps', 'Interaktibo ug Gidibuho nga Mapa sa Geopark'],
+  ['Switch between the live GPS pin map and the illustrated “Balik sa Bohol” cultural & adventure map.', 'Pagbalhin tali sa live GPS pin map ug sa gidibuho nga mapa sa kultura ug panaw sa “Balik sa Bohol”.'],
+
+  // Hotels & Shops
+  ['Suggestions of Near Hotels', 'Mga Sugyot nga Duol nga Hotel'],
+  ['Curated resorts and eco-stays near Bohol’s key geopark sites.', 'Pinili nga mga resort ug eco-stay duol sa mga importanteng lugar sa geopark sa Bohol.'],
+  ['Suggestions of Near Souvenirs', 'Mga Sugyot nga Duol nga Tindahan sa Souvenir'],
+  ['Local shops for Boholano delicacies, crafts, and pasalubong.', 'Lokal nga mga tindahan alang sa mga pagkaon, buhat sa kamot, ug pasalubong sa Bohol.'],
+
+  // History & Events
+  ['History & Important Events', 'Kasaysayan ug Importante nga mga Panghitabo'],
+  ['Unfolding across two distinct timelines: millions of years of natural formation, followed by a decade-long institutional push to secure international protection.', 'Nagpakita sa duha ka managlahing linya sa panahon: minilyon ka tuig sa natural nga pagkaporma, gisundan sa paningkamot alang sa internasyonal nga proteksyon.'],
+  ['Geological Formation Timeline', 'Kasaysayan sa Pagkaporma sa Yuta'],
+  ['Institutional & UNESCO Timeline', 'Kasaysayan sa Institusyon ug UNESCO'],
+
+  // Trip Planner & Ambient Audio
+  ['Visitor Companion & Trip Planner', 'Giya sa Bisita ug Plano sa Biyahe'],
+  ['Plan your route, listen to field soundscapes, check seasonal conditions, and learn local Boholano phrases.', 'Planoha ang imong ruta, paminaw sa mga tingog sa kinaiyahan, susiha ang panahon, ug pagkat-on og Binisaya.'],
+  ['Bohol Island Climate & Reef Visibility', 'Klima sa Isla sa Bohol ug Kahimtang sa Dagat'],
+  ['Sounds of the Geopark', 'Mga Tingog sa Geopark'],
+  ['Plan Your Geopark Adventure', 'Planoha ang Imong Panaw sa Geopark'],
+  ['Not sure where to start across 47 municipalities and 1 city? Open our curated step-by-step route planner.', 'Wala ka kabalo asa magsugod sa 47 ka lungsod ug 1 ka siyudad? Ablihi ang among giya nga plano sa biyahe.'],
+  ['Build My Geopark Itinerary', 'Himoa ang Akong Itineraryo'],
+  ['Speak Local Binisaya', 'Sulti og Lokal nga Binisaya'],
+  ['Greet locals warmly in Boholano. Open our pocket phrasebook with one-tap copy and pronunciation guides.', 'Timbayaa ang mga lokal sa mainitong Binisaya. Ablihi ang among listahan sa mga pulong.'],
+  ['Open Boholano Phrasebook', 'Ablihi ang Phrasebook sa Binisaya'],
+
+  // Protected Geopark Biodiversity
+  ['Protected Geopark Biodiversity', 'Gipanalipdan nga Kinaiyahan sa Geopark'],
+  ['Explore the rare primates, gliding mammals, forest-canopy lizards, and centuries-old mangrove sanctuaries thriving across Bohol.', 'Ilha ang talagsaong mga mananap, lumad nga mga hayop sa kalasangan, ug karaang katunggan nga nabuhi sa Bohol.'],
+
+  // Ranger Challenge & Guardian
+  ['Are You a True Bohol Geopark Explorer?', 'Tinuod Ka Ba nga Tigsuhid sa Bohol Geopark?'],
+  ['Take the Quiz & Earn Your Pass', 'Tubaga ang Pasulit ug Kuhaa ang Imong Pass'],
+  ['Guardian of the Geopark', 'Magbalantay sa Geopark'],
+  ['Ask Mawmaw', 'Pangutana kang Mawmaw']
+]);
+
+const originalTextStore = new WeakMap();
+
+function applyFullSiteTranslation(targetLang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const k = el.getAttribute('data-i18n');
-    if (dict[lang][k]) el.textContent = dict[lang][k];
+    const key = el.getAttribute('data-i18n');
+    if (i18nKeys[targetLang] && i18nKeys[targetLang][key]) {
+      el.textContent = i18nKeys[targetLang][key];
+    }
   });
-});
+
+  const candidates = document.querySelectorAll('h1, h2, h3, h4, p, button, .btn-amber, .hero-cta, cite');
+  candidates.forEach(el => {
+    if (el.id === 'langBtn' || el.querySelector('input, canvas, select')) return;
+
+    if (!originalTextStore.has(el)) {
+      originalTextStore.set(el, el.innerHTML);
+    }
+
+    const origHTML = originalTextStore.get(el);
+    const cleanText = el.textContent.replace(/\s+/g, ' ').trim();
+
+    if (targetLang === 'ceb') {
+      if (cebPhraseMap.has(cleanText)) {
+        el.textContent = cebPhraseMap.get(cleanText);
+      }
+    } else {
+      el.innerHTML = origHTML;
+    }
+  });
+}
+
+const langBtn = document.getElementById('langBtn');
+if (langBtn) {
+  langBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'ceb' : 'en';
+    langBtn.textContent = currentLang === 'en' ? ' EN / Binisaya' : ' Binisaya / EN';
+    applyFullSiteTranslation(currentLang);
+  });
+}
 
 const itineraries = {
   day1: [
