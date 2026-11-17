@@ -542,8 +542,39 @@
     <h2 class="section-title">Visitor Companion & Trip Planner</h2>
     <p class="section-sub">Plan your route, listen to field soundscapes, check seasonal conditions, and learn local Boholano phrases.</p>
 
-   <div class="two-col" style="margin-top:24px">
-      <!-- LEFT: ROUTE BUILDER -->
+    <!-- TOP FIELD DASHBOARD (WEATHER + SOUNDS OF THE GEOPARK) -->
+    <div class="bento-hero-bar">
+      <div class="bh-weather">
+        <div class="cc-head">
+          <span class="bh-tag">Seasonal Field Conditions</span>
+          <span class="live-pill">Peak Dry Window</span>
+        </div>
+        <h3>Bohol Island Climate & Reef Visibility</h3>
+        <div class="bh-stats">
+          <div><strong>29°C</strong><span>Avg. Coastal Temp</span></div>
+          <div><strong>Nov – Apr</strong><span>Best Dry Season</span></div>
+          <div><strong>Calm Seas</strong><span>Danajon Visibility</span></div>
+        </div>
+        <p>Clear morning skies at the Chocolate Hills viewpoint in Carmen and calm waters for northern reef & mangrove boat tours.</p>
+      </div>
+
+      <div class="bh-audio">
+        <div class="cc-head">
+          <span class="bh-tag">Geopark Soundscape</span>
+          <span id="audioStatus" class="bh-status">Tap to listen</span>
+        </div>
+        <h3>Sounds of the Geopark</h3>
+        <div class="sound-grid-2x2">
+          <button class="sound-btn dark" data-sound="tarsier" type="button">Mawmag Night Calls</button>
+          <button class="sound-btn dark" data-sound="river" type="button">Loboc River Ripples</button>
+          <button class="sound-btn dark" data-sound="forest" type="button">Tarsier Forest Breeze</button>
+          <button class="sound-btn dark" data-sound="hearth" type="button">Asin Tibuok Kiln</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM 2 SIDE-BY-SIDE LAUNCHER CARDS -->
+    <div class="two-col" style="margin-top:24px">
       <div class="companion-card">
         <div class="cc-head">
           <span class="brgy-badge">Curated Route Builder</span>
@@ -563,7 +594,6 @@
         </div>
       </div>
 
-      <!-- RIGHT: BOHOLANO PHRASEBOOK -->
       <div class="companion-card">
         <div class="cc-head">
           <span class="brgy-badge">Local Dialect</span>
@@ -597,21 +627,22 @@
         </div>
       </div>
     </div>
+  </div>
 </section>
 
 <!-- DEDICATED SECTION: PROTECTED BIODIVERSITY & ENDEMIC WILDLIFE CAROUSEL -->
 <section class="section" id="wildlife">
   <div class="wrap">
     <h2 class="section-title">Protected Geopark Biodiversity</h2>
-    <p class="section-sub">Explore the rare gliding mammals, forest-canopy lizards, and centuries-old mangrove sanctuaries thriving across Bohol.</p>
+    <p class="section-sub">Explore the rare primates, gliding mammals, forest-canopy lizards, and centuries-old mangrove sanctuaries thriving across Bohol.</p>
 
     <div class="welcome-grid" style="margin-top:42px">
       <!-- Left Editorial Copy + Carousel Controls -->
       <div class="welcome-copy" id="wildlifeCopy">
-        <span class="brgy-badge" id="wlTag">Endemic Arboreal Mammal</span>
-        <h3 id="wlTitle" style="margin-top:8px">Philippine Colugo (Cagwang)</h3>
-        <p id="wlDesc1">Known locally as the <strong>Cagwang</strong>, the Philippine colugo is a nocturnal gliding mammal inhabiting Bohol’s secondary limestone forests and lush wooded valleys.</p>
-        <p id="wlDesc2">Equipped with a wide, fur-covered gliding membrane (<em>patagium</em>) stretching from its neck to the tip of its tail, it can soar silently over 100 meters between forest canopies without descending to the ground.</p>
+        <span class="brgy-badge" id="wlTag">Endemic Nocturnal Primate</span>
+        <h3 id="wlTitle" style="margin-top:8px">Philippine Tarsier (Mawmag)</h3>
+        <p id="wlDesc1">Known locally in Bohol as the <strong>Mawmag</strong> (<em>Carlito syrichta</em>), this fist-sized nocturnal primate is one of the smallest primates in the world, measuring just 85 to 160 millimeters in body length.</p>
+        <p id="wlDesc2">Equipped with enormous eyes fixed in its skull for acute night vision, a neck that rotates nearly 180 degrees, and elongated tarsus bones capable of leaping up to 5 meters between branches, the Mawmag thrives in Bohol’s dense secondary forests and bamboo thickets.</p>
 
         <div class="wl-controls">
           <div class="wl-arrows">
@@ -619,17 +650,18 @@
             <button type="button" class="wl-arrow" id="nextWildlife" aria-label="Next wildlife">›</button>
           </div>
           <div class="wl-dots" id="wildlifeDots">
-            <button type="button" class="wl-dot active" data-widx="0" aria-label="Philippine Colugo"></button>
-            <button type="button" class="wl-dot" data-widx="1" aria-label="Bohol Flying Lizard"></button>
-            <button type="button" class="wl-dot" data-widx="2" aria-label="Banacon Mangrove Ecosystem"></button>
+            <button type="button" class="wl-dot active" data-widx="0" aria-label="Philippine Tarsier"></button>
+            <button type="button" class="wl-dot" data-widx="1" aria-label="Philippine Colugo"></button>
+            <button type="button" class="wl-dot" data-widx="2" aria-label="Bohol Flying Lizard"></button>
+            <button type="button" class="wl-dot" data-widx="3" aria-label="Banacon Mangrove Ecosystem"></button>
           </div>
         </div>
       </div>
 
-      <!-- Right Overlapping Collage Matching Welcome Section -->
+      <!-- Right Overlapping Collage -->
       <div class="collage wildlife-collage" id="wildlifeCollage">
-        <img class="img-main" id="wlImgMain" src="images/colugo-1.jpg" alt="Philippine Colugo clinging to a tree branch">
-        <img class="img-sub" id="wlImgSub" src="images/colugo-2.jpg" alt="Close-up of Philippine Colugo gliding membrane">
+        <img class="img-main" id="wlImgMain" src="images/tarsier-1.jpg" alt="Philippine Tarsier (Mawmag) clinging to a forest branch">
+        <img class="img-sub" id="wlImgSub" src="images/tarsier-2.jpg" alt="Close-up of Philippine Tarsier in Bohol forest">
       </div>
     </div>
   </div>

@@ -1047,6 +1047,13 @@ if (startQuizBtn) {
 
 const wildlifeSlides = [
   {
+    tag: 'Endemic Nocturnal Primate',
+    title: 'Philippine Tarsier (Mawmag)',
+    desc1: 'Known locally in Bohol as the <strong>Mawmag</strong> (<em>Carlito syrichta</em>), this fist-sized nocturnal primate is one of the smallest primates in the world, measuring just 85 to 160 millimeters in body length.',
+    desc2: 'Equipped with enormous eyes fixed in its skull for acute night vision, a neck that rotates nearly 180 degrees, and elongated tarsus bones capable of leaping up to 5 meters between branches, the Mawmag thrives in Bohol’s dense secondary forests and bamboo thickets.',
+    photos: ['images/tarsier-1.jpg', 'images/tarsier-2.jpg']
+  },
+  {
     tag: 'Endemic Arboreal Mammal',
     title: 'Philippine Colugo (Cagwang)',
     desc1: 'Known locally as the <strong>Cagwang</strong>, the Philippine colugo is a nocturnal gliding mammal inhabiting Bohol’s secondary limestone forests and lush wooded valleys.',
