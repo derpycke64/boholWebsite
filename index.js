@@ -1033,7 +1033,7 @@ const fullStories = {
     title: 'The Legend of Hinagdanan Cave',
     badge: '📍 Bingag, Dauis · Panglao Island',
     era: '🪜 Legend of Discovery',
-    img: 'images/chocolate-hills.jpg',
+    img: 'images/hinagdanan-cave.jpg',
     pin: 'Ocean Suites',
     paragraphs: [
       'Centuries ago on Panglao Island, a local farmer was clearing thick brush on his rocky land in Barangay Bingag when he noticed a narrow opening hidden beneath tangled vines.',
@@ -1045,7 +1045,7 @@ const fullStories = {
     title: 'The Sacred Golden Bell of Loboc River',
     badge: '📍 Loboc Municipality',
     era: '🔔 River Folklore',
-    img: 'images/danajon-reef.jpg',
+    img: 'images/loboc-rver.jpg',
     pin: 'Loboc River Resort',
     paragraphs: [
       'Along the emerald waters of the Loboc River, elders tell the tale of a magnificent golden church bell whose clear chime could once be heard across the surrounding hills and valleys.',
@@ -1057,7 +1057,7 @@ const fullStories = {
     title: 'The Mystical Spirits of Lamanok Island',
     badge: '📍 Anda Peninsula · Eastern Bohol',
     era: '🕯️ Ancient Shamanic Lore',
-    img: 'images/alicia-schist.jpg',
+    img: 'images/lamanok-island.jpg',
     pin: 'Solea Reef Resort Anda',
     paragraphs: [
       'Rising dramatically from turquoise waters off Anda, Lamanok Island is revered in Boholano oral tradition as the sacred dwelling place of ancient spirits and the cradle of Bohol’s early <em>babaylan</em> (indigenous healers and shamans).',
