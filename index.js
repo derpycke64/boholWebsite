@@ -1074,44 +1074,66 @@ const modalMapBtn = document.getElementById('modalMapBtn');
 let currentModalPin = null;
 
 function openStoryModal(key) {
+  if (!storyModal || typeof fullStories === 'undefined') return;
   const s = fullStories[key];
   if (!s) return;
-  document.getElementById('modalImg').src = s.img;
-  document.getElementById('modalImg').alt = s.title;
-  document.getElementById('modalBadge').textContent = s.badge;
-  document.getElementById('modalEra').textContent = s.era;
-  document.getElementById('modalTitle').textContent = s.title;
-  document.getElementById('modalContent').innerHTML = s.paragraphs.map(p => `<p>${p}</p>`).join('');
+
+  const imgEl = document.getElementById('modalImg');
+  const badgeEl = document.getElementById('modalBadge');
+  const eraEl = document.getElementById('modalEra');
+  const titleEl = document.getElementById('modalTitle');
+  const contentEl = document.getElementById('modalContent');
+  const modalBody = storyModal.querySelector('.modal-body');
+
+  if (imgEl) {
+    imgEl.src = s.img;
+    imgEl.alt = s.title;
+  }
+  if (badgeEl) badgeEl.textContent = s.badge;
+  if (eraEl) eraEl.textContent = s.era;
+  if (titleEl) titleEl.textContent = s.title;
+  if (contentEl) contentEl.innerHTML = s.paragraphs.map(p => `<p>${p}</p>`).join('');
+  if (modalBody) modalBody.scrollTop = 0;
+
   currentModalPin = s.pin;
   storyModal.classList.add('open');
   storyModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeStoryModal() {
+  if (!storyModal) return;
   storyModal.classList.remove('open');
   storyModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
 }
 
 document.querySelectorAll('.clickable-card').forEach(card => {
   card.addEventListener('click', () => openStoryModal(card.dataset.story));
 });
 
-closeStoryModalBtn.addEventListener('click', closeStoryModal);
-modalDoneBtn.addEventListener('click', closeStoryModal);
-storyModal.addEventListener('click', e => {
-  if (e.target === storyModal) closeStoryModal();
-});
+if (closeStoryModalBtn) closeStoryModalBtn.addEventListener('click', closeStoryModal);
+if (modalDoneBtn) modalDoneBtn.addEventListener('click', closeStoryModal);
+if (storyModal) {
+  storyModal.addEventListener('click', e => {
+    if (e.target === storyModal) closeStoryModal();
+  });
+}
 
-modalMapBtn.addEventListener('click', () => {
-  closeStoryModal();
-  if (currentModalPin) {
-    // Ensure live map tab is visible
-    document.getElementById('liveMapView').style.display = 'block';
-    document.getElementById('illustratedMapView').style.display = 'none';
-    document.getElementById('toggleIllustratedBtn').classList.remove('active');
-    flyTo(currentModalPin);
-  }
-});
+if (modalMapBtn) {
+  modalMapBtn.addEventListener('click', () => {
+    closeStoryModal();
+    if (currentModalPin) {
+      const liveMap = document.getElementById('liveMapView');
+      const illusMap = document.getElementById('illustratedMapView');
+      const illusBtn = document.getElementById('toggleIllustratedBtn');
+      if (liveMap) liveMap.style.display = 'block';
+      if (illusMap) illusMap.style.display = 'none';
+      if (illusBtn) illusBtn.classList.remove('active');
+      if (typeof flyTo === 'function') flyTo(currentModalPin);
+    }
+  });
+}
 
 // 12. ILLUSTRATED "BALIK SA BOHOL" MAP TOGGLE & FULL-SCREEN LIGHTBOX
 const toggleIllustratedBtn = document.getElementById('toggleIllustratedBtn');
@@ -1276,3 +1298,50 @@ wildlifeSection.addEventListener('mouseenter', () => {
 });
 wildlifeSection.addEventListener('mouseleave', resetWildlifeTimers);
 resetWildlifeTimers();
+
+// VISITOR SUGGESTION BOX MODAL
+const suggestionModal = document.getElementById('suggestionModal');
+const openSuggestionBtn = document.getElementById('openSuggestionModal');
+const closeSuggestionBtn = document.getElementById('closeSuggestionModal');
+
+function closeSuggestionModal() {
+  if (!suggestionModal) return;
+  suggestionModal.classList.remove('open');
+  suggestionModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+if (openSuggestionBtn && suggestionModal) {
+  openSuggestionBtn.addEventListener('click', () => {
+    suggestionModal.classList.add('open');
+    suggestionModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+}
+
+if (closeSuggestionBtn) {
+  closeSuggestionBtn.addEventListener('click', closeSuggestionModal);
+}
+
+if (suggestionModal) {
+  suggestionModal.addEventListener('click', e => {
+    if (e.target === suggestionModal) closeSuggestionModal();
+  });
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('storyModal');
+  if (!modal) return;
+
+  document.querySelectorAll('.clickable-card').forEach(card => {
+    card.onclick = () => {
+      if (typeof openStoryModal === 'function') {
+        openStoryModal(card.dataset.story);
+      }
+    };
+  });
+
+  const closeBtn = document.getElementById('closeStoryModal') || document.getElementById('closeModalBtn');
+  const doneBtn = document.getElementById('modalDoneBtn');
+  if (closeBtn) closeBtn.onclick = () => { if (typeof closeStoryModal === 'function') closeStoryModal(); };
+  if (doneBtn) doneBtn.onclick = () => { if (typeof closeStoryModal === 'function') closeStoryModal(); };
+});

@@ -207,7 +207,7 @@
 
       <!-- 3 NEW MYTHS & LEGENDS CARDS -->
       <article class="tour-card clickable-card" data-story="hinagdanan">
-        <img src="images/chocolate-hills.jpg" alt="Limestone cavern skylight in Panglao">
+        <img src="images/hinagdanan-cave.jpg" alt="Limestone cavern skylight in Panglao">
         <div class="tour-body">
           <div>
             <h3>The Legend of Hinagdanan Cave</h3>
@@ -221,7 +221,7 @@
       </article>
 
       <article class="tour-card clickable-card" data-story="loboc">
-        <img src="images/danajon-reef.jpg" alt="Emerald waters of Loboc River">
+        <img src="images/loboc-rver.jpg" alt="Emerald waters of Loboc River">
         <div class="tour-body">
           <div>
             <h3>The Golden Bell of Loboc River</h3>
@@ -235,7 +235,7 @@
       </article>
 
       <article class="tour-card clickable-card" data-story="lamanok">
-        <img src="images/alicia-schist.jpg" alt="Ancient limestone cliffs of Lamanok Island in Anda">
+        <img src="images/lamanok-island.jpg" alt="Ancient limestone cliffs of Lamanok Island in Anda">
         <div class="tour-body">
           <div>
             <h3>The Mystical Spirits of Lamanok Island</h3>
@@ -745,21 +745,22 @@
   </button>
 </div>
 
-<div class="story-modal-backdrop" id="storyModal" aria-hidden="true">
-  <div class="story-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button type="button" class="modal-close-btn" id="closeStoryModal" aria-label="Close pop-up">✕</button>
-    <img id="modalImg" src="" alt="">
-    <div class="modal-body">
-      <div class="modal-badges">
-        <span class="brgy-badge" id="modalBadge"></span>
-        <span class="live-pill" id="modalEra"></span>
+<div class="story-modal-backdrop" id="suggestionModal" aria-hidden="true">
+  <div class="form-modal-card" role="dialog" aria-modal="true" aria-labelledby="formModalTitle">
+    <div class="form-modal-head">
+      <div>
+        <span class="brgy-badge" style="margin-bottom:2px">Visitor Suggestion Box</span>
+        <h3 id="formModalTitle">Bohol Island Geopark Feedback & Suggestions</h3>
       </div>
-      <h3 id="modalTitle"></h3>
-      <div id="modalContent" class="modal-text"></div>
-      <div class="modal-actions">
-        <button type="button" class="btn-amber" id="modalMapBtn"> Locate on Geopark Map</button>
-        <button type="button" class="btn-sm alt" id="modalDoneBtn">Close Story</button>
-      </div>
+      <button type="button" class="modal-close-btn static-close" id="closeSuggestionModal" aria-label="Close suggestion box">✕</button>
+    </div>
+    <div class="form-iframe-wrap">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScseE5uADH7dedq_e-4N1m-i6pT_8npbAsv-yUGQACE6CEvhg/viewform?embedded=true"
+        title="Bohol Island Geopark Suggestion Box"
+        loading="lazy">
+        Loading form…
+      </iframe>
     </div>
   </div>
 </div>
@@ -771,6 +772,40 @@
     <img src="images/bohol-illustrated-map.jpg" alt="Full screen Bohol Illustrated Map">
   </div>
 </div>
+<div class="story-modal-backdrop" id="storyModal" aria-hidden="true">
+  <div class="story-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="modal-close-btn" id="closeStoryModal" aria-label="Close story">✕</button>
+    <img id="modalImg" src="" alt="">
+    <div class="modal-body">
+      <div class="modal-badges">
+        <span class="brgy-badge" id="modalBadge"></span>
+        <span class="live-pill" id="modalEra"></span>
+      </div>
+      <h3 id="modalTitle"></h3>
+      <div class="modal-text" id="modalContent"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn-amber" id="modalMapBtn">View Location on Map</button>
+        <button type="button" class="btn-sm alt" id="modalDoneBtn">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="suggestions" style="background:var(--bg-soft);padding-top:56px;padding-bottom:64px">
+  <div class="wrap">
+    <div class="suggestion-banner">
+      <div>
+        <span class="brgy-badge">Community & Visitor Input</span>
+        <h3>Share Your Suggestions for Bohol Geopark</h3>
+        <p>Have ideas for new geosite features, trail improvements, local stories, or feedback on this visitor guide? Send your thoughts directly to our team.</p>
+      </div>
+      <div class="suggestion-actions" style="display:flex;gap:10px;flex-wrap:wrap">
+        <button type="button" class="btn-amber" id="openSuggestionModal">Open Suggestion Form</button>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScseE5uADH7dedq_e-4N1m-i6pT_8npbAsv-yUGQACE6CEvhg/viewform" target="_blank" rel="noopener" class="btn-sm alt">Open in New Tab</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer class="site-footer">
   <div class="wrap footer-grid">
